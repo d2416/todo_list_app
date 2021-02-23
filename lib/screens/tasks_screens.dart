@@ -22,7 +22,11 @@ class MainScreen extends StatelessWidget {
           print(MediaQuery.of(context).size);
           showModalBottomSheet(
             context: context,
-            builder: (context) => AddTaskScreen(),
+            builder: (context) => SingleChildScrollView(
+              padding: EdgeInsets.only(
+                  bottom: MediaQuery.of(context).viewInsets.bottom),
+              child: AddTaskScreen(),
+            ),
             backgroundColor: Color(0xFF757575),
             isScrollControlled: true,
           );
