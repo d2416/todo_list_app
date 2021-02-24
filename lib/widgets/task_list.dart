@@ -26,7 +26,10 @@ class TasksList extends StatelessWidget {
       createTask(),
     ];
     for (Task task in tasks) {
-      TaskTile tile = TaskTile(label: task.name);
+      TaskTile tile = TaskTile(
+        label: task.name,
+        isChecked: task.isDone,
+      );
       tiles.add(tile);
     }
 
