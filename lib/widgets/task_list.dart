@@ -5,38 +5,30 @@ import 'package:todoey_flutter/models/task.dart';
 class TasksList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: getListTasks(),
+    List<Task> tasks = getListTasks();
+
+    return ListView.builder(
+      itemBuilder: (context, index) {
+        return TaskTile(
+          label: tasks[index].name,
+          isChecked: tasks[index].isDone,
+        );
+      },
+      itemCount: tasks.length,
     );
   }
 
-  List<TaskTile> getListTasks() {
-    List<TaskTile> tiles = [];
-
+  List<Task> getListTasks() {
     List<Task> tasks = [
-      createTask(),
-      createTask(),
-      createTask(),
-      createTask(),
-      createTask(),
-      createTask(),
-      createTask(),
-      createTask(),
-      createTask(),
-      createTask(),
+      createTask(0),
+      createTask(1),
+      createTask(2),
     ];
-    for (Task task in tasks) {
-      TaskTile tile = TaskTile(
-        label: task.name,
-        isChecked: task.isDone,
-      );
-      tiles.add(tile);
-    }
 
-    return tiles;
+    return tasks;
   }
 
-  Task createTask() {
-    return Task(name: 'Buy milk');
+  Task createTask(int counter) {
+    return Task(name: 'Buy milk $counter');
   }
 }
