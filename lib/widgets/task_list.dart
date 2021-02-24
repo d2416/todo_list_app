@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todoey_flutter/widgets/task_tile.dart';
+import 'package:todoey_flutter/models/task.dart';
 
 class TasksList extends StatelessWidget {
   @override
@@ -12,28 +13,27 @@ class TasksList extends StatelessWidget {
   List<TaskTile> getListTasks() {
     List<TaskTile> tiles = [];
 
-    List<String> tasks = [
-      'Buy milk',
-      'Buy eggs',
-      'Buy bread',
-      'Buy milk',
-      'Buy eggs',
-      'Buy bread',
-      'Buy milk',
-      'Buy eggs',
-      'Buy bread',
-      'Buy milk',
-      'Buy eggs',
-      'Buy bread',
-      'Buy milk',
-      'Buy eggs',
-      'Buy bread'
+    List<Task> tasks = [
+      createTask(),
+      createTask(),
+      createTask(),
+      createTask(),
+      createTask(),
+      createTask(),
+      createTask(),
+      createTask(),
+      createTask(),
+      createTask(),
     ];
-    for (String task in tasks) {
-      TaskTile tile = TaskTile(label: task);
+    for (Task task in tasks) {
+      TaskTile tile = TaskTile(label: task.name);
       tiles.add(tile);
     }
 
     return tiles;
+  }
+
+  Task createTask() {
+    return Task(name: 'Buy milk');
   }
 }
