@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
 
 class AddTaskScreen extends StatelessWidget {
+  final Function newTaskCallback;
+  final TextEditingController addTaskTetFieldController =
+      TextEditingController();
+
+  AddTaskScreen({this.newTaskCallback});
+
   @override
   Widget build(BuildContext context) {
+    String newTask;
+
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.only(
@@ -24,12 +32,19 @@ class AddTaskScreen extends StatelessWidget {
             ),
           ),
           TextField(
+            controller: addTaskTetFieldController,
             autofocus: true,
             textAlign: TextAlign.center,
+            onChanged: (task) {
+              newTask = task;
+            },
           ),
           MaterialButton(
             color: Colors.lightBlueAccent,
-            onPressed: () {},
+            onPressed: () {
+              newTaskCallback(newTask);
+              addTaskTetFieldController.clear();
+            },
             child: Text(
               'Add',
               style: TextStyle(
