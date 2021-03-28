@@ -4,10 +4,9 @@ import 'dart:collection';
 
 class TaskData extends ChangeNotifier {
   List<Task> _tasks = [
-    Task(name: 'Buy milk 1'),
-    Task(name: 'Buy eggs 2'),
-    Task(name: 'Buy bread 3'),
-    Task(name: 'Buy PQ'),
+    Task(name: 'Buy milk'),
+    Task(name: 'Buy eggs'),
+    Task(name: 'Buy bread'),
   ];
 
   int get length => _tasks.length;
